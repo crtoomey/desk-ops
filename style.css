@@ -17,11 +17,19 @@
     gap: 14px;
 }
 
-.ticket-placeholder {
-    padding: 5px;
+footer {
+    text-align: center;
+}
+
+.border-radius {
     border-radius: 8px;
 }
 
-footer {
-    text-align: center;
+.ticket-card {
+    margin-top: 14px;
+    padding: 5px;
+}
+
+.type-tag {
+    padding: 5px;
 }
