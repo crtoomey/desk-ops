@@ -36,13 +36,16 @@
     <div class="container-fluid main-window">
         <section class="ticket-window">
             <h1>Tickets</h1>
-            <span class="border border-light-subtle text-body-secondary ticket-placeholder">Tickets go here</span>
+            <p class="border border-light-subtle text-body-secondary ticket-container"><span
+                    class="ticket-placeholder">Tickets go
+                    here</span></p>
 
         </section>
 
         <section class="call-window">
             <p><em>Someone is calling...</em></p>
-            <button class="btn btn-light" onclick="showNewCall()">
+            <button class="btn btn-light call-button" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-telephone" viewBox="0 0 16 16">
                     <path
@@ -54,36 +57,22 @@
         </section>
     </div>
 
-    <div class="toast-container position-fixed top-50 start-50 translate-middle p-3">
-        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-                <strong class="me-auto">New Call</strong>
-                <small>Just Now</small>
-            </div>
-            <div class="toast-body">
-                Hello, world! This should be a call from someone who needs help, but an error occurred!
-            </div>
-            <div class="mt-2 pt-2 border-top">
-                <button type="button" class="btn btn-light btn-sm" onclick="makeNewTicket(call)"
-                    data-bs-dismiss="toast">Generate
-                    Ticket</button>
-                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">Close</button>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+    <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasBottomLabel">Incoming Call</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body small">
-            Call details go here
-            <button type="button" class="btn btn-light" data-bs-dismiss="offcanvas" aria-label="Close">Generate
+            <div class="call-placeholder-container">
+                <p class="call-placeholder">Call details go here</p>
+            </div>
+            <button type="button" class="btn btn-light clarify-button">Ask clarifying
+                question</button>
+            <button type="button" class="btn btn-light generate-ticket-button d-none" data-bs-dismiss="offcanvas"
+                aria-label="Close">Generate
                 Ticket</button>
         </div>
-    </div> -->
+    </div>
 
 
 
