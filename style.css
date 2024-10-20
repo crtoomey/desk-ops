@@ -1,0 +1,27 @@
+.container-fluid {
+    text-align: center;
+}
+
+.main-window {
+    height: 100%;
+    margin-top: 14px;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.ticket-window {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.ticket-placeholder {
+    padding: 5px;
+    border-radius: 8px;
+}
+
+footer {
+    text-align: center;
+}
