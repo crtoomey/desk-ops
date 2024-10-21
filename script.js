@@ -1,4 +1,4 @@
-console.log('yo');
+
 let callPlaceholder = document.querySelector('.call-placeholder');
 let ticketPlaceholder = document.querySelector('.ticket-placeholder');
 let ticketContainer = document.querySelector('.ticket-container');
@@ -7,7 +7,11 @@ let callButton = document.querySelector('.call-button');
 let callAlert = document.querySelector('.call-alert');
 let clarifyButton = document.querySelector('.clarify-button');
 let genTicketButton = document.querySelector('.generate-ticket-button');
+let offCanvasTitle = document.querySelector('.offcanvas-title');
+let resolveButton = document.querySelector('.resolve-button');
+let escalateButton = document.querySelector('.escalate-button');
 let currentCall = null;
+let ticketCounter = 1;
 
 const callTypes = [
     { type: 'low', question: 'A caller asks question 1', details: 'More in depth info 1' },
@@ -51,36 +55,26 @@ callButton.addEventListener('click', function () {
             } else {
                 console.log("Error assigning bg based on type of call")
             }
+            ticketContainer.classList.remove("border");
             ticketContainer.innerHTML +=
-                `<p class="ticket-card border-radius ${typeBorder}">
-            <strong class="type-tag border-radius ${typeClass}">${currentCall.type}</strong> 
-            <span class="caller-question">${currentCall.question}</span> <br /> <span class="caller-details">${currentCall.details}</span>
-            </p>`;
-            clearCallWindow();
+                `<div class="ticket-card border-radius d-flex flex-column justify-content-center align-items-center gap-2 ${typeBorder}">
+                <h3>Ticket ${ticketCounter}</h3>
+            <h5>Severity: </h5><strong class="type-tag border-radius ${typeClass}">${currentCall.type}</strong> 
+            <h5>Ticket Details: </h5><span class="caller-question">${currentCall.question}</span> <br /> <span class="caller-details">${currentCall.details}</span>
+            <div class="btn-group" role="group" aria-label="Ticket buttons">
+                <button type="button" class="btn btn-success resolve-button">Resolve</button>
+                <button type="button" class="btn btn-danger escalate-button">Escalate</button>
+            </div>
+            </div>`;
+            offcanvasCallContainer.innerHTML = "";
             genTicketButton.classList.add("d-none");
             clarifyButton.classList.remove("d-none");
+            ticketCounter++;
         }
     } else {
         callButton.classList.add("d-none");
         callAlert.innerHTML = "No one is calling...";
         clarifyButton.classList.add("d-none");
-        alert('No calls');
+        offCanvasTitle.innerHTML = "No Calls";
     }
-
-    // callPlaceholder.remove();
-    // offcanvasCallContainer.innerHTML += `<p>User asks: ${newCall.question}</p>`;
-    // clarifyButton.addEventListener('click', function () {
-    //     offcanvasCallContainer.innerHTML += `<p>User says: ${newCall.details}</p>`;
-    //     clarifyButton.remove();
-    //     genTicketButton.classList.remove("d-none");
-    // });
-    // genTicketButton.addEventListener('click', function () {
-    //     ticketPlaceholder.remove();
-    //     ticketContainer.innerHTML += `<strong>${newCall.type}</strong> <span class="caller-question">${newCall.question}</span> <br /> <span class="caller-details">${newCall.details}</span><br />`;
-    //     clearCallWindow();
-    // });
 });
-
-function clearCallWindow() {
-    offcanvasCallContainer.innerHTML = "";
-}
